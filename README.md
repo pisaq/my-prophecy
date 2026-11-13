@@ -6,7 +6,7 @@ Web MIDI (e.g. a MidiLink Mini or any class-compliant USB MIDI interface).
 
 ![My Prophecy — Panel view](docs/screenshot.png)
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/YOUR_USERNAME)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/pisaqenn)
 
 **Open source** under the [MIT License](LICENSE) — use it, change it, share it. Contributions welcome.
 

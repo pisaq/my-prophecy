@@ -1,0 +1,279 @@
+/* Audio → MIDI page. */
+
+/* —— Audio → MIDI —— */
+
+.a2m {
+  max-width: 960px;
+}
+
+.a2m .panel .hint {
+  margin: 0 0 12px;
+}
+
+.a2m-drop {
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  padding: 26px 16px;
+  border: 1.5px dashed rgb(255 255 255 / 18%);
+  border-radius: 10px;
+  background: rgb(0 0 0 / 18%);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color 120ms ease,
+    background 120ms ease;
+}
+
+.a2m-drop:hover,
+.a2m-drop:focus-visible,
+.a2m-drop.is-over {
+  border-color: var(--accent);
+  background: rgb(126 184 201 / 8%);
+  outline: none;
+}
+
+.a2m-drop.is-disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.a2m-drop-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.a2m-drop-sub {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.a2m-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.a2m-record.is-recording {
+  color: #ffd2cd;
+  border-color: rgb(255 69 58 / 50%);
+  background: rgb(255 69 58 / 18%);
+  animation: a2m-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes a2m-pulse {
+  50% {
+    background: rgb(255 69 58 / 32%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a2m-record.is-recording {
+    animation: none;
+  }
+}
+
+.a2m-progress {
+  margin-top: 12px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgb(255 255 255 / 8%);
+  overflow: hidden;
+}
+
+.a2m-progress-bar {
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  transition: width 150ms ease;
+}
+
+.a2m-status {
+  margin-top: 10px;
+  min-height: 1.4em;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.a2m-status.is-ok {
+  color: #9be3b0;
+}
+
+.a2m-status.is-warn,
+.a2m-warn {
+  color: #ffd58a !important;
+}
+
+.a2m-status.is-error {
+  color: #ff9d94;
+}
+
+.a2m-result-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.a2m-meta {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.a2m-roll {
+  display: block;
+  width: 100%;
+  height: 260px;
+  border-radius: 8px;
+  background: rgb(0 0 0 / 28%);
+  border: 1px solid var(--panel-border);
+}
+
+.a2m-empty {
+  padding: 28px 12px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-faint);
+  border-radius: 8px;
+  background: rgb(0 0 0 / 18%);
+}
+
+.a2m-settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px 18px;
+  margin-top: 12px;
+}
+
+.a2m-field {
+  min-width: 150px;
+}
+
+.a2m-check input {
+  accent-color: var(--accent);
+}
+
+.a2m-steps {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 3px;
+  margin-top: 12px;
+}
+
+.a2m-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  min-height: 38px;
+  border-radius: 5px;
+  background: rgb(126 184 201 / 14%);
+  border: 1px solid rgb(126 184 201 / 28%);
+  font-variant-numeric: tabular-nums;
+}
+
+.a2m-step.is-reset {
+  background: rgb(255 159 10 / 12%);
+  border-color: rgb(255 159 10 / 30%);
+}
+
+.a2m-step.is-unused {
+  background: rgb(255 255 255 / 3%);
+  border-color: var(--panel-border);
+}
+
+.a2m-step-note {
+  font-size: 10px;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.a2m-step-val {
+  font-size: 9px;
+  color: var(--text-faint);
+}
+
+.a2m-seq-preview .hint {
+  margin: 8px 0 0;
+}
+
+.a2m .a2m-scale-hint {
+  margin: 10px 0 0;
+}
+
+@media (width <= 700px) {
+  .a2m-steps {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+
+/* Audio → MIDI: every control on one 32px line so buttons, selects,
+   slider and checkbox line up (fields drop their default bottom margin). */
+.a2m .field {
+  margin-bottom: 0;
+}
+
+.a2m .primary-btn,
+.a2m .ghost-btn,
+.a2m .mac-select,
+.a2m-field input[type='range'],
+.a2m-check {
+  box-sizing: border-box;
+  height: 32px;
+}
+
+.a2m .primary-btn,
+.a2m .ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.a2m .mac-select {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.a2m-field input[type='range'] {
+  width: 180px;
+  accent-color: var(--accent);
+  margin: 0;
+}
+
+.a2m-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+  padding-bottom: 0;
+}
+
+.a2m-seq-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.a2m .a2m-show-panel {
+  height: 26px;
+  font-size: 11px;
+  padding: 0 10px;
+}
+
+/* The button display rules above would otherwise override [hidden] */
+.a2m [hidden] {
+  display: none !important;
+}

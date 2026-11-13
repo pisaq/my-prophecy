@@ -1,0 +1,1291 @@
+/* Panel view: hardware board grid, sections, rows and compact controls. */
+
+/* —— Hardware Panel (no-scroll Rev2 map) —— */
+
+.window.panel-mode .main-head {
+  display: none;
+}
+
+.window.panel-mode .main {
+  min-width: 0;
+}
+
+.window.panel-mode .workspace {
+  overflow: hidden;
+  padding: 8px 10px 10px;
+}
+
+.hw-board {
+  height: 100%;
+  display: grid;
+  /* Top = perf + clock/banks/fx; mid = gated seq; bottom = voice */
+  grid-template-rows: minmax(0, 1fr) minmax(120px, 0.55fr) minmax(150px, 1.2fr);
+  gap: 5px;
+  min-height: 0;
+}
+
+.hw-trackpad {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.hw-trackpad .hw-title {
+  margin: 0;
+}
+
+.hw-trackpad-mini {
+  margin-top: 4px;
+  flex: 1;
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.hw-trackpad-mini .hw-title {
+  font-size: 8px;
+  margin-bottom: 2px;
+  flex: 0 0 auto;
+}
+
+.hw-trackpad-mini .pitch-pad-compact {
+  border-radius: 6px;
+}
+
+.hw-trackpad-mini .pitch-pad-readout-compact {
+  font-size: 9px;
+  flex: 0 0 auto;
+}
+
+.pitch-pad-compact {
+  flex: 0 1 auto;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  min-height: 0;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+.pitch-pad-compact .pitch-pad-finger {
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+}
+
+.pitch-pad-compact .pitch-pad-labels {
+  inset: 4px 6px;
+  font-size: 9px;
+}
+
+.pitch-pad-readout-compact {
+  margin-top: 0;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hw-perf-row {
+  display: flex;
+  gap: 6px;
+  min-height: 0;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.hw-perf-row-wheels {
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 4px 0;
+}
+
+.hw-perf-row-controls {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+.hw-perf-block {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding: 4px;
+  border-radius: 8px;
+  background: rgb(0 0 0 / 18%);
+  border: 1px solid rgb(255 255 255 / 5%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hw-perf-block > .hw-col-label {
+  margin: 0 0 2px;
+  padding: 0;
+}
+
+.hw-perf-rail .wheel-track {
+  width: 24px;
+  height: 72px;
+}
+
+.hw-perf-rail .wheel-thumb {
+  height: 14px;
+  margin-bottom: -7px;
+}
+
+.hw-perf-rail .wheel-control .control-label {
+  margin-bottom: 3px;
+}
+
+.hw-perf-rail .wheel-control .control-value {
+  margin-top: 3px;
+}
+
+.hw-perf-rail .control {
+  width: 44px;
+}
+
+.hw-perf-rail .knob {
+  width: 28px;
+  height: 28px;
+}
+
+.hw-perf-rail .knob-pointer {
+  height: 10px;
+  margin-top: -10px;
+}
+
+.hw-perf-rail .control-label {
+  margin-bottom: 2px;
+}
+
+.hw-perf-rail .control-value {
+  margin-top: 2px;
+}
+
+.hw-perf-rail .mac-select,
+.hw-perf-rail .mac-toggle {
+  font-size: 9px;
+  padding: 3px 4px;
+}
+
+.hw-perf-rail .hw-row {
+  gap: 3px 4px;
+}
+
+.hw-seq-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.hw-top-row .hw-seq-perf-cluster {
+  min-width: 0;
+  min-height: 0;
+}
+
+.hw-seq-perf-cluster {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hw-seq-perf-inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.hw-seq-perf-inner .hw-perf-block {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hw-unison-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.hw-unison-stack .hw-perf-block {
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 0;
+  padding: 4px;
+  gap: 2px;
+  box-sizing: border-box;
+}
+
+.hw-unison-stack .hw-perf-block .hw-col-label {
+  margin: 0 0 2px;
+  padding: 0;
+  font-size: 8px;
+}
+
+.hw-unison-stack .hw-perf-block .hw-row {
+  flex: 1;
+  gap: 2px 3px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 0;
+}
+
+.hw-unison-stack .hw-perf-block .control {
+  width: 34px;
+}
+
+.hw-unison-stack .hw-perf-block .knob {
+  width: 22px;
+  height: 22px;
+}
+
+.hw-unison-stack .hw-perf-block .knob-pointer {
+  height: 8px;
+  margin-top: -8px;
+}
+
+.hw-unison-stack .hw-perf-block .control-label {
+  margin-bottom: 1px;
+}
+
+.hw-unison-stack .hw-perf-block .control-value {
+  margin-top: 1px;
+}
+
+.hw-unison-stack .hw-perf-block .mac-toggle {
+  font-size: 9px;
+  padding: 4px 6px;
+  min-height: 24px;
+  height: 24px;
+  min-width: 0;
+  width: 100%;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.hw-unison-stack .hw-perf-block .toggle-control {
+  flex: 0 0 auto;
+  width: 52px;
+  min-width: 52px;
+  align-self: center;
+}
+
+.hw-unison-stack .hw-perf-block .toggle-control::before {
+  display: none;
+  content: none;
+  margin: 0;
+}
+
+.hw-unison-stack .hw-perf-block .toggle-control.labeled .mac-toggle {
+  min-width: 0;
+}
+
+.hw-unison-stack .hw-perf-block .knob-control {
+  align-self: center;
+}
+
+.hw-unison-stack .hw-transpose {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  flex-wrap: nowrap;
+  gap: 3px;
+  width: calc(100% - 12px);
+  max-width: calc(100% - 12px);
+  min-height: 0;
+}
+
+.hw-unison-stack .hw-oct {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  height: 24px;
+  min-height: 24px;
+  padding: 4px 2px !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.hw-seq-wheels {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 0;
+}
+
+.hw-seq-wheels .hw-perf-row-wheels {
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0;
+  gap: 4px;
+}
+
+.hw-seq-wheels .wheel-control {
+  justify-content: center;
+  align-self: center;
+}
+
+.hw-seq-wheels .wheel-track {
+  width: 14px;
+  height: 40px;
+  min-height: 28px;
+  max-height: 40px;
+}
+
+.hw-seq-wheels .wheel-thumb {
+  height: 10px;
+  margin-bottom: -5px;
+}
+
+.hw-seq-wheels .wheel-control .control-label {
+  margin-bottom: 1px;
+}
+
+.hw-seq-wheels .wheel-control .control-value {
+  margin-top: 1px;
+}
+
+.hw-seq-strip {
+  overflow: auto;
+  min-width: 0;
+}
+
+.hw-top-row,
+.hw-voice-row {
+  display: grid;
+  gap: 6px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.hw-top-row {
+  /* Clock/Arp + Rate/Seq | Programs | Effects/Env */
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.hw-banks-main {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+  align-items: stretch;
+  height: 100%;
+}
+
+.hw-banks-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.hw-banks-left .hw-trackpad-mini {
+  /* Square from remaining height; sets left column width */
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  height: 0;
+  width: auto;
+  max-width: 100%;
+  /* Square: .hw-banks-left width is set from available height in JS */
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.hw-banks-left .hw-trackpad-mini .pitch-pad-compact {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: unset;
+}
+
+.hw-banks-main .hw-unison-stack {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 118px;
+  max-width: none;
+  min-height: 0;
+  align-self: stretch;
+  height: 100%;
+}
+
+.hw-banks-recall {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.hw-banks-recall .mac-select,
+.hw-banks-recall .mac-number {
+  flex: 1;
+  min-width: 0;
+  width: 0;
+}
+
+.hw-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 0 0 auto;
+  min-height: 0;
+  justify-content: flex-start;
+}
+
+.hw-layers-inline {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 3px;
+  align-items: stretch;
+}
+
+.hw-layers-inline .hw-mode-btn {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  padding: 0 4px !important;
+  font-size: 9px !important;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.hw-unison-stack .hw-layers-block .hw-layers-inline {
+  flex: 1;
+  width: calc(100% - 12px);
+  max-width: calc(100% - 12px);
+  min-height: 0;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.hw-unison-stack .hw-layers-block .hw-layers-inline .hw-mode-btn {
+  flex: 1 1 0;
+}
+
+.hw-voice-row {
+  /* Modulation | LFO | Osc | Filter + Amp (stacked sections) */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.section-oscillators,
+.section-filter,
+.section-amp {
+  justify-content: stretch;
+}
+
+.hw-section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.hw-section-stack > .hw-section {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.hw-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+}
+
+.hw-stack-part {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 3px;
+  border-top: 1px solid rgb(255 255 255 / 6%);
+}
+
+.stack-clock_arp_seq {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.stack-clock_arp_seq > .hw-section {
+  flex: none;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.section-rate,
+.section-clock,
+.section-arp,
+.section-seq_ctrl {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.section-rate .hw-strip,
+.section-clock .hw-strip,
+.section-arp .hw-strip,
+.section-seq_ctrl .hw-strip {
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.section-rate .hw-strip-label,
+.section-clock .hw-strip-label,
+.section-arp .hw-strip-label,
+.section-seq_ctrl .hw-strip-label {
+  padding: 0;
+  margin: 0 0 4px;
+}
+
+.hw-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex: 0 0 auto;
+  min-width: 0;
+  margin: 0 0 4px;
+}
+
+.hw-section-head .hw-strip-label,
+.hw-section-head .hw-col-label {
+  margin: 0;
+  padding: 0;
+}
+
+.hw-section-head .hw-section-on {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: calc(3ch + 1.5em);
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  padding: 0 8px !important;
+  font-size: 9px !important;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+}
+
+/* Lit when on — same glass fill as Sync / 4 Pole */
+.hw-section-head .hw-section-on.on {
+  color: var(--accent-fill-text);
+  background: var(--accent-fill);
+  border-color: var(--accent-fill-border);
+  box-shadow: var(--accent-fill-glow);
+}
+
+/* Dim + disable section body when its header on/off is off; keep header clickable */
+.hw-section.is-off > :not(.hw-section-head),
+.hw-stack-part.is-off > :not(.hw-section-head) {
+  opacity: 0.42;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 120ms ease;
+}
+
+.hw-section.is-off > :not(.hw-section-head) button,
+.hw-section.is-off > :not(.hw-section-head) select,
+.hw-section.is-off > :not(.hw-section-head) input,
+.hw-stack-part.is-off > :not(.hw-section-head) button,
+.hw-stack-part.is-off > :not(.hw-section-head) select,
+.hw-stack-part.is-off > :not(.hw-section-head) input {
+  cursor: not-allowed;
+}
+
+.hw-section:not(.is-off) > :not(.hw-section-head),
+.hw-stack-part:not(.is-off) > :not(.hw-section-head) {
+  transition: opacity 120ms ease;
+}
+
+.hw-section.is-off > .hw-section-head,
+.hw-stack-part.is-off > .hw-section-head {
+  opacity: 1;
+}
+
+.section-rate .control,
+.section-clock .control,
+.section-arp .control,
+.section-seq_ctrl .control {
+  width: 100%;
+  max-width: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.section-rate .select-control,
+.section-clock .select-control,
+.section-arp .select-control,
+.section-seq_ctrl .select-control,
+.section-rate .toggle-control,
+.section-clock .toggle-control,
+.section-arp .toggle-control,
+.section-seq_ctrl .toggle-control,
+.section-rate .knob-control,
+.section-clock .knob-control,
+.section-arp .knob-control,
+.section-seq_ctrl .knob-control {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.section-rate .toggle-control::before,
+.section-clock .toggle-control::before,
+.section-arp .toggle-control::before,
+.section-seq_ctrl .toggle-control::before {
+  display: none;
+}
+
+.section-rate .control-label,
+.section-clock .control-label,
+.section-arp .control-label,
+.section-seq_ctrl .control-label {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+  text-align: left;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.section-rate .control-value,
+.section-clock .control-value,
+.section-arp .control-value,
+.section-seq_ctrl .control-value {
+  margin-top: 2px;
+  text-align: left;
+}
+
+.section-rate .mac-toggle,
+.section-clock .mac-toggle,
+.section-arp .mac-toggle,
+.section-seq_ctrl .mac-toggle {
+  width: 100%;
+  min-width: 0;
+  padding: 3px 8px;
+  font-size: 10px;
+  min-height: 24px;
+  line-height: 1.2;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.section-rate .knob,
+.section-clock .knob,
+.section-arp .knob,
+.section-seq_ctrl .knob {
+  align-self: flex-start;
+}
+
+/* Rate / Clock / Arp / Seq: controls stacked and centered */
+
+.section-rate .knob-control,
+.section-clock .knob-control,
+.section-rate .select-control,
+.section-clock .select-control,
+.section-arp .select-control,
+.section-seq_ctrl .select-control,
+.section-arp .value-btns-control {
+  width: 60%;
+  max-width: 60%;
+  align-items: center;
+  align-self: center;
+}
+
+.section-rate .knob-control .control-label,
+.section-rate .knob-control .control-value,
+.section-clock .knob-control .control-label,
+.section-clock .knob-control .control-value,
+.section-rate .select-control .control-label,
+.section-clock .select-control .control-label,
+.section-arp .select-control .control-label,
+.section-seq_ctrl .select-control .control-label,
+.section-arp .value-btns-control .control-label {
+  text-align: center;
+}
+
+.section-rate .knob-control .knob,
+.section-clock .knob-control .knob {
+  align-self: center;
+}
+
+.section-rate .mac-select,
+.section-clock .mac-select,
+.section-arp .mac-select,
+.section-seq_ctrl .mac-select {
+  font-size: 10px;
+  padding: 3px 4px 3px 8px;
+  min-height: 24px;
+  line-height: 1.2;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.section-rate .mac-select {
+  min-width: 0;
+}
+
+/* Beat .hw-board .control { width: 52px }; keep controls at 60% of the column */
+.hw-board .section-rate .control,
+.hw-board .section-clock .control,
+.hw-board .section-arp .control,
+.hw-board .section-seq_ctrl .control {
+  width: 60%;
+  max-width: 60%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+.section-rate .hw-row,
+.section-clock .hw-row,
+.section-arp .hw-row,
+.section-seq_ctrl .hw-row {
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 5px 6px;
+  width: 60%;
+  max-width: 60%;
+  justify-items: stretch;
+  justify-content: center;
+}
+
+.hw-board .section-rate .control,
+.hw-board .section-clock .control,
+.hw-board .section-arp .select-control,
+.hw-board .section-seq_ctrl .select-control {
+  width: 100%;
+  max-width: 100%;
+  align-self: stretch;
+  min-width: 0;
+}
+
+.hw-board .section-rate .knob-control,
+.hw-board .section-clock .knob-control {
+  align-items: center;
+}
+
+.section-rate .knob-control,
+.section-clock .knob-control,
+.section-arp .select-control:nth-of-type(1),
+.section-seq_ctrl .select-control:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.section-rate .select-control,
+.section-clock .select-control,
+.section-arp .select-control:nth-of-type(2),
+.section-seq_ctrl .select-control:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.hw-board .section-arp .value-btns-control {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  width: 100%;
+  max-width: 100%;
+  align-self: stretch;
+  align-items: stretch;
+}
+
+.section-arp .hw-value-btns {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 3px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.section-arp .hw-value-btns .hw-oct {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  height: 24px;
+  min-height: 24px;
+  padding: 4px 2px !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.stack-fx_env {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.stack-fx_env > .hw-section {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.section-fx .hw-strip,
+.section-env3 .hw-strip {
+  min-height: 0;
+  flex: 1;
+  justify-content: flex-start;
+  padding-top: 14px;
+}
+
+.section-fx .hw-section-head,
+.section-env3 .hw-section-head {
+  margin: 0 0 2px;
+}
+
+.section-fx .hw-row {
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px 5px;
+  min-width: 0;
+}
+
+.section-fx .select-control,
+.section-fx .toggle-control {
+  align-self: center;
+  justify-content: center;
+}
+
+.section-fx .toggle-control::before {
+  display: none;
+}
+
+.section-env3 .hw-row {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 5px;
+  min-width: 0;
+}
+
+.section-env3 .select-control {
+  align-self: center;
+  justify-content: center;
+}
+
+.section-fx .control,
+.section-env3 .control {
+  width: 44px;
+  flex: 0 0 auto;
+}
+
+.section-fx .select-control,
+.section-env3 .select-control {
+  width: auto;
+  flex: 1 1 0;
+  min-width: 56px;
+  max-width: 100px;
+}
+
+.section-fx .knob,
+.section-env3 .knob {
+  width: 28px;
+  height: 28px;
+}
+
+.section-fx .knob-pointer,
+.section-env3 .knob-pointer {
+  height: 10px;
+  margin-top: -10px;
+}
+
+.section-fx .control-label,
+.section-env3 .control-label {
+  margin-bottom: 1px;
+}
+
+.section-fx .control-value,
+.section-env3 .control-value {
+  margin-top: 1px;
+}
+
+.section-fx .mac-select,
+.section-env3 .mac-select {
+  font-size: 9px;
+  padding: 2px 3px;
+  min-height: 22px;
+  box-sizing: border-box;
+}
+
+.section-fx .mac-toggle,
+.section-env3 .mac-toggle {
+  padding: 2px 6px;
+  font-size: 9px;
+  min-height: 22px;
+}
+
+.section-env3 .toggle-control::before {
+  line-height: 1.1;
+  margin-bottom: 1px;
+}
+
+.hw-stack-part:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.hw-subtitle,
+.hw-col-label,
+.hw-strip-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.hw-subtitle,
+.hw-col-label {
+  margin: 0 0 4px;
+  padding: 0;
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+
+.hw-section {
+  min-width: 0;
+  min-height: 0;
+  /* Equal inset from top and left for section headers */
+  padding: 6px 6px 4px;
+  border-radius: var(--radius-panel);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section title labels — no extra offset beyond section padding */
+.hw-section > .hw-col-label,
+.hw-section > .hw-strip > .hw-strip-label:first-child,
+.hw-section > .hw-stack > .hw-stack-part:first-child > .hw-strip-label.hw-col-label,
+.hw-seq-head > .hw-col-label {
+  margin: 0 0 4px;
+  padding: 0;
+}
+
+.hw-title {
+  margin: 0 0 4px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  flex: 0 0 auto;
+}
+
+.hw-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.hw-strip-label:not(.hw-col-label) {
+  flex: 0 0 auto;
+  padding-top: 0;
+  margin: 0;
+  line-height: 1.1;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.hw-banks-grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.section-banks > .hw-strip {
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.section-banks .hw-col-label {
+  padding: 0;
+  margin: 0 0 4px;
+}
+
+.hw-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.hw-board .control {
+  width: 52px;
+}
+
+.hw-board .knob-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hw-board .control-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+}
+
+.hw-board .knob-control .control-label,
+.hw-board .select-control .control-label {
+  width: 100%;
+  text-align: center;
+}
+
+.hw-board .control-value {
+  margin-top: 2px;
+  font-size: 8px;
+  line-height: 1.15;
+}
+
+.hw-board .knob-control .control-value {
+  text-align: center;
+}
+
+.hw-board .knob {
+  width: 28px;
+  height: 28px;
+  margin: 0;
+}
+
+.hw-board .knob-pointer {
+  height: 10px;
+  margin-top: -10px;
+}
+
+.hw-board .slider-control {
+  width: 72px;
+}
+
+.hw-board .select-control {
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hw-board .select-control .mac-select {
+  width: 100%;
+}
+
+.hw-board .mac-select,
+.hw-board .mac-number {
+  font-size: 10px;
+  padding: 3px 4px 3px 8px;
+  line-height: 1.2;
+  min-height: 24px;
+  box-sizing: border-box;
+}
+
+.hw-board .mac-toggle {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  line-height: 1.2;
+  min-height: 24px;
+  box-sizing: border-box;
+}
+
+.hw-board .toggle-control {
+  min-width: 0;
+  width: auto;
+}
+
+/* Mirror select/knob label so the button lines up with the dropdown, not above it */
+.hw-board .toggle-control::before {
+  content: '\00a0';
+  display: block;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin-bottom: 2px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.wheel-control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wheel-track {
+  position: relative;
+  width: 28px;
+  height: 110px;
+  border-radius: 14px;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* Recessed slot: darker at the top so the rim stays visible all the way round */
+  background: linear-gradient(180deg, rgb(0 0 0 / 22%), rgb(255 255 255 / 6%)), #1a1a1e;
+  border: 1px solid rgb(255 255 255 / 16%);
+  box-shadow: inset 0 2px 4px rgb(0 0 0 / 35%);
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.wheel-thumb {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  height: 18px;
+  margin-bottom: -9px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #9fd0dd, #5a9aab);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 35%);
+  pointer-events: none;
+  transition:
+    background 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.hw-transpose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: 0;
+}
+
+.hw-oct {
+  min-width: 22px;
+  height: 18px;
+  min-height: 0;
+  padding: 0 3px !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hw-oct.on {
+  background: rgb(126 184 201 / 22%);
+  border-color: rgb(126 184 201 / 40%);
+  color: var(--accent-strong);
+}
+
+.hw-mode-btn {
+  width: 100%;
+  font-size: 10px;
+  padding: 8px 6px;
+}
+
+.hw-mode-btn.on {
+  background: rgb(126 184 201 / 22%);
+  border-color: rgb(126 184 201 / 40%);
+  color: var(--accent-strong);
+}
+
+.hw-note {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.35;
+  color: var(--text-dim);
+}
+
+/* —— Gated sequencer —— */
+
+/* A control that doesn't apply right now (e.g. gated Mode with Poly sequencer) */
+.hw-board .control.is-inactive {
+  opacity: 0.4;
+}
+
+.hw-board .control.is-inactive select,
+.hw-board .control.is-inactive input,
+.hw-board .control.is-inactive button {
+  cursor: not-allowed;
+}

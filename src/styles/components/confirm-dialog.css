@@ -1,0 +1,29 @@
+/* In-app confirmation dialog. */
+
+/* —— Confirm modal (replaces window.confirm) —— */
+
+.confirm-modal {
+  z-index: 30; /* above the section modal */
+}
+
+.confirm-sheet {
+  width: min(400px, 100%);
+}
+
+.confirm-message {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.confirm-foot {
+  gap: 8px;
+}
+
+.primary-btn.danger {
+  background: linear-gradient(180deg, #ff7a6e, #e0544a);
+  border-color: rgb(255 122 110 / 45%);
+  color: #1a0605;
+  box-shadow: none;
+}

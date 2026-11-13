@@ -1,0 +1,427 @@
+/* Per-section panel layouts (banks, LFO, modulation, oscillators, filter, amp, clock/rate/seq). */
+
+.hw-banks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.section-banks {
+  overflow: hidden;
+}
+
+.hw-banks .primary-btn {
+  padding: 5px 8px;
+  font-size: 11px;
+}
+
+.section-modulation,
+.section-lfos {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.hw-mod-body {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.section-modulation .hw-seq-wheels {
+  flex: 0 0 auto;
+  padding: 0 0 0 2px;
+  gap: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: 0;
+}
+
+.section-modulation .hw-seq-wheels .hw-perf-row-wheels {
+  flex: 1;
+  gap: 6px;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.section-modulation .hw-seq-wheels .wheel-control {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+  justify-content: stretch;
+}
+
+.section-modulation .hw-seq-wheels .wheel-control .control-label {
+  margin-bottom: 6px;
+}
+
+.section-modulation .hw-seq-wheels .wheel-control .control-value {
+  margin-top: 6px;
+}
+
+.section-modulation .hw-seq-wheels .wheel-track {
+  width: 26px;
+  height: auto;
+  min-height: 88px;
+  max-height: none;
+  flex: 1;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.section-modulation .hw-seq-wheels .wheel-thumb {
+  height: 14px;
+  margin-bottom: -7px;
+  left: 2px;
+  right: 2px;
+}
+
+.hw-mod-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: 1px;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  align-content: stretch;
+}
+
+.hw-mod-slot {
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.section-modulation .hw-col-label {
+  margin: 0 0 4px;
+  padding: 0;
+}
+
+.section-modulation .hw-strip-label:not(.hw-col-label) {
+  padding-top: 0;
+  flex: 0 0 12px;
+  text-align: center;
+  align-self: center;
+}
+
+.section-modulation .hw-row {
+  flex: 1;
+  flex-wrap: nowrap;
+  gap: 4px;
+  min-width: 0;
+  align-items: center;
+}
+
+.section-modulation .select-control {
+  flex: 0 1 auto;
+  width: 100px;
+  max-width: 100px;
+  min-width: 0;
+}
+
+.section-modulation .select-control .control-label,
+.section-modulation .knob-control .control-label {
+  display: none;
+}
+
+.section-modulation .select-control .mac-select {
+  width: 100%;
+  max-width: 100%;
+  font-size: 9px;
+  padding: 2px 3px 2px 8px;
+}
+
+.section-modulation .knob-control {
+  flex: 0 0 auto;
+  width: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-modulation .knob-control .control-value {
+  display: block;
+  margin-top: 0;
+  font-size: 8px;
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+.section-lfos .hw-strip {
+  flex: 1 1 0;
+  flex-direction: row;
+  align-items: center;
+  min-height: 0;
+  gap: 5px;
+}
+
+.section-lfos .hw-col-label {
+  margin: 0 0 4px;
+  padding: 0;
+}
+
+.section-lfos .hw-strip-label:not(.hw-col-label) {
+  padding-top: 0;
+  flex: 0 0 12px;
+  text-align: center;
+  align-self: center;
+}
+
+.section-lfos .hw-row {
+  flex: 1;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 3px 5px;
+  min-width: 0;
+}
+
+.section-lfos .knob-control {
+  width: 40px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-lfos .control-label {
+  display: block;
+  width: 100%;
+  height: 10px;
+  margin-bottom: 2px;
+  line-height: 10px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.section-lfos .control-value {
+  margin-top: 1px;
+  line-height: 1.1;
+  min-height: 10px;
+}
+
+.section-lfos .select-control {
+  width: auto;
+  flex: 1 1 0;
+  min-width: 52px;
+  max-width: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-lfos .select-control .control-label {
+  text-align: center;
+}
+
+.section-lfos .select-control .mac-select {
+  font-size: 9px;
+  padding: 2px 3px 2px 8px;
+  min-height: 22px;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.section-lfos .toggle-control {
+  flex: 0 0 auto;
+  min-width: 0;
+  width: auto;
+}
+
+.section-lfos .toggle-control.labeled::before {
+  display: none;
+}
+
+.section-lfos .mac-toggle {
+  padding: 2px 7px;
+  font-size: 9px;
+  min-height: 22px;
+  white-space: nowrap;
+}
+
+.section-lfos .toggle-control.labeled .mac-toggle {
+  min-width: calc(3ch + 1.75em);
+}
+
+.section-oscillators,
+.section-filter,
+.section-amp {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Row labels (1 / 2 / Mix) sit left of the row, like the LFO numbers */
+.section-oscillators .hw-strip {
+  flex: 1 1 0;
+  flex-direction: row;
+  align-items: center;
+  min-height: 0;
+  gap: 5px;
+}
+
+.section-oscillators .hw-strip-label:not(.hw-col-label) {
+  padding-top: 0;
+  flex: 0 0 20px; /* wide enough for MIX; keeps the three rows' knobs in line */
+  text-align: center;
+  align-self: center;
+}
+
+.section-oscillators .hw-row {
+  flex: 1;
+  min-width: 0;
+  flex-wrap: nowrap;
+  gap: 4px 6px;
+}
+
+.section-oscillators .control {
+  width: 58px;
+}
+
+.section-oscillators .select-control {
+  width: 78px;
+}
+
+.section-oscillators .control-label {
+  overflow: visible;
+  text-overflow: clip;
+  text-align: center;
+}
+
+.section-filter .hw-strip,
+.section-amp .hw-strip {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.section-filter .hw-strip-label,
+.section-amp .hw-strip-label {
+  padding-top: 0;
+}
+
+.section-filter .hw-row,
+.section-amp .hw-row {
+  display: grid;
+  /* Same 7 columns in every row, so knobs line up down both sections */
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  justify-items: center;
+  gap: 3px 5px;
+}
+
+.section-filter .control,
+.section-amp .control {
+  width: 54px;
+}
+
+.section-filter .select-control,
+.section-filter .toggle-control,
+.section-amp .select-control,
+.section-amp .toggle-control {
+  width: auto;
+  min-width: 54px;
+}
+
+.section-filter .control-label,
+.section-amp .control-label {
+  overflow: visible;
+  text-overflow: clip;
+  text-align: center;
+}
+
+@media (width <= 1100px) {
+  .hw-board {
+    gap: 5px;
+  }
+}
+
+/* Clock / Rate / Sequencer: controls centred in the space under the section
+   header, both ways (panel and expanded modal). */
+.section-clock .hw-strip,
+.section-rate .hw-strip,
+.section-seq_ctrl .hw-strip {
+  flex: 1 1 auto;
+  justify-content: flex-start; /* keeps Clock's title at the top */
+}
+
+/* Balance the 4px spacing under the header so the centring is exact */
+.section-clock .hw-strip {
+  gap: 0;
+}
+
+.section-clock .hw-row,
+.section-rate .hw-row,
+.section-seq_ctrl .hw-row {
+  flex: 1 1 auto;
+  grid-template-rows: auto;
+  align-content: center;
+  align-self: center;
+  margin-bottom: 4px;
+}
+
+/* Panel dropdowns: label lines up with the dropdown's text — 1px border +
+   8px left padding on .mac-select. Extra .hw-board so this beats the
+   per-section centring above. */
+.hw-board .select-control .control-label,
+.hw-board .section-lfos .select-control .control-label,
+.hw-board .section-oscillators .select-control .control-label {
+  box-sizing: border-box;
+  padding-left: 9px;
+  text-align: left;
+}
+
+/* FX / Env 3 dropdowns have 3px left padding */
+.hw-board .section-fx .select-control .control-label,
+.hw-board .section-env3 .select-control .control-label {
+  padding-left: 4px;
+}
+
+/* LPF & Envelope 1 and Amplifier & Envelope 2: every row on the same
+   7-column grid, so knobs line up down both sections; each pair of rows is
+   centred in its section's height. */
+.section-filter .hw-row > .control,
+.section-amp .hw-row > .control {
+  width: 100%;
+  min-width: 0;
+}
+
+.section-filter .hw-row .mac-toggle {
+  white-space: nowrap;
+}
+
+.section-filter > .hw-strip:first-of-type > .hw-row,
+.section-amp > .hw-strip:first-of-type > .hw-row {
+  margin-top: auto;
+}
+
+.section-filter > .hw-strip + .hw-strip,
+.section-amp > .hw-strip + .hw-strip {
+  padding-top: 10px;
+}
+
+/* Indent only the title for the expand icon, not the whole first row —
+   otherwise its columns sit right of the envelope row's. */
+.section-filter.has-expand > .hw-expand-btn + .hw-strip,
+.section-amp.has-expand > .hw-expand-btn + .hw-strip {
+  margin-left: 0;
+}
+
+.section-filter.has-expand > .hw-strip > .hw-strip-label:first-child,
+.section-amp.has-expand > .hw-strip > .hw-strip-label:first-child {
+  margin-left: 18px;
+}

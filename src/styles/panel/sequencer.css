@@ -1,0 +1,343 @@
+/* Gated sequencer (panel strip and editor). */
+
+.gated-seq {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.gated-seq-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gated-seq-hint {
+  margin: 0;
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.35;
+  flex: 1;
+  min-width: 180px;
+}
+
+.gated-seq-tools {
+  display: flex;
+  gap: 6px;
+}
+
+.gated-seq-btn {
+  font-size: 10px;
+  padding: 4px 8px;
+}
+
+.gated-seq-globals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.gated-seq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 650;
+}
+
+.gated-seq-field .mac-select {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.gated-seq-toggle {
+  min-width: calc(3ch + 1.75em);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.gated-seq-toggle.on {
+  background: rgb(126 184 201 / 22%);
+  border-color: rgb(126 184 201 / 40%);
+  color: var(--accent-strong);
+}
+
+.gated-seq-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  flex: 1;
+}
+
+.gated-seq-track {
+  display: grid;
+  grid-template-columns: 132px 1fr auto;
+  grid-template-rows: 1fr auto;
+  gap: 8px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.gated-seq-meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-start;
+  grid-row: 1 / -1;
+  min-width: 0;
+}
+
+.gated-seq-track-label {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  min-width: 1.4em;
+}
+
+.gated-seq-track-clear {
+  font-size: 9px;
+  padding: 2px 6px;
+  align-self: center;
+  grid-row: 1;
+}
+
+.gated-seq-dest {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 10px;
+  padding: 3px 4px;
+}
+
+.gated-seq-steps {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 3px;
+  min-height: 56px;
+  height: 100%;
+}
+
+.gated-seq-step {
+  position: relative;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 35%);
+  border: 1px solid rgb(255 255 255 / 8%);
+  cursor: ns-resize;
+  touch-action: none;
+  overflow: hidden;
+  min-height: 48px;
+}
+
+.gated-seq-step:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.gated-seq-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background: linear-gradient(180deg, rgb(159 208 221 / 85%), rgb(90 154 171 / 55%));
+  pointer-events: none;
+}
+
+.gated-seq-step.is-reset .gated-seq-fill {
+  background: linear-gradient(180deg, rgb(255 159 10 / 90%), rgb(255 159 10 / 35%));
+}
+
+.gated-seq-step.is-after-reset {
+  opacity: 0.35;
+}
+
+.gated-seq-val {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 8px;
+  font-variant-numeric: tabular-nums;
+  color: rgb(255 255 255 / 85%);
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 60%);
+}
+
+.gated-seq-nums {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 3px;
+  font-size: 8px;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+.gated-seq-track > .gated-seq-track-clear {
+  grid-column: 3;
+}
+
+.gated-seq-compact {
+  gap: 6px;
+  overflow: hidden;
+}
+
+.gated-seq-compact .gated-seq-hint {
+  display: none;
+}
+
+.gated-seq-compact .gated-seq-tools {
+  gap: 3px;
+}
+
+.gated-seq-compact .gated-seq-btn {
+  font-size: 8px;
+  padding: 2px 6px;
+  line-height: 1.2;
+  min-height: 18px;
+}
+
+.gated-seq-compact .gated-seq-track {
+  grid-template-columns: 132px 1fr auto;
+  grid-template-rows: 1fr;
+  gap: 5px 4px;
+  min-height: 0;
+  align-items: start;
+}
+
+.gated-seq-compact .gated-seq-meta {
+  gap: 4px;
+  align-self: start;
+  height: 30px;
+  align-items: center;
+}
+
+.gated-seq-compact .gated-seq-track-clear {
+  font-size: 9px;
+  padding: 2px 7px;
+  line-height: 1.2;
+  box-sizing: border-box;
+  align-self: start;
+  margin-top: 3px;
+  height: 24px;
+  min-height: 20px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gated-seq-compact .gated-seq-nums {
+  display: none;
+}
+
+.gated-seq-compact .gated-seq-track-label {
+  font-size: 9px;
+  min-width: 1.2em;
+}
+
+.gated-seq-compact .gated-seq-dest {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 10px;
+  padding: 3px 4px 3px 8px;
+  line-height: 1.2;
+  min-height: 24px;
+}
+
+.gated-seq-compact .gated-seq-steps {
+  min-height: 0;
+  height: 100%;
+  gap: 2px;
+  padding: 0;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+.gated-seq-compact .gated-seq-step {
+  min-height: 30px;
+  max-height: 30px;
+  height: 30px;
+  border-radius: 3px;
+  align-self: start;
+}
+
+.gated-seq-compact .gated-seq-val {
+  font-size: 8px;
+}
+
+.hw-seq-strip.section-sequencer {
+  min-height: 0;
+  overflow: hidden;
+  padding: 6px 6px 4px;
+}
+
+.hw-seq-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex: 0 0 auto;
+  margin-bottom: 4px;
+}
+
+.hw-seq-head .hw-col-label {
+  margin: 0;
+  padding: 0;
+}
+
+.hw-seq-head .gated-seq-tools {
+  margin-left: auto;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.hw-seq-head .gated-seq-btn {
+  font-size: 9px;
+  padding: 2px 7px;
+  line-height: 1.2;
+  min-height: 20px;
+  border-radius: 4px;
+}
+
+/* Match per-track Clear to Clear All width ("Clear All" + horizontal padding) */
+.hw-seq-head .gated-seq-tools .gated-seq-btn:last-child,
+.gated-seq-compact .gated-seq-track-clear {
+  min-width: calc(9ch + 1.1em);
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.gated-seq-compact .gated-seq-tracks {
+  gap: 5px;
+  flex: 1;
+  min-height: 0;
+}
+
+.gated-seq-compact .gated-seq-header {
+  display: none;
+}
+
+.gated-seq-compact .gated-seq-globals {
+  display: none;
+}

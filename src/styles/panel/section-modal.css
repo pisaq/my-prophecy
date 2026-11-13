@@ -1,0 +1,142 @@
+/* Expand icon on panel sections and the expanded-section modal. */
+
+/* —— Panel section expand → modal —— */
+
+.hw-section.has-expand,
+.hw-trackpad-mini.has-expand {
+  position: relative;
+}
+
+.hw-expand-btn {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 4%);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.7;
+  transition:
+    opacity 120ms ease,
+    background 120ms ease,
+    color 120ms ease;
+}
+
+.hw-section:hover > .hw-expand-btn,
+.hw-trackpad-mini:hover > .hw-expand-btn,
+.hw-expand-btn:focus-visible {
+  opacity: 1;
+}
+
+.hw-expand-btn:hover {
+  background: rgb(255 255 255 / 10%);
+  color: var(--accent-strong);
+}
+
+/* Make room so the icon doesn't cover the section's first label */
+.hw-section.has-expand > .hw-expand-btn + * {
+  margin-left: 18px;
+}
+
+/* Trackpad corner label sits where the expand icon is */
+.hw-trackpad-mini.has-expand .pitch-pad-labels .pl-tl {
+  left: 12px;
+}
+
+/* Expand button stays clickable on sections switched off */
+.hw-section.is-off > .hw-expand-btn {
+  opacity: 0.7;
+  pointer-events: auto;
+}
+
+.section-modal-sheet {
+  width: min(1100px, 100%);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Expanded panel section: sized to fit its zoomed mirror */
+.section-modal-sheet.is-mirror {
+  width: auto;
+  max-width: 100%;
+}
+
+.hw-board.hw-modal-frame {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  grid-template-rows: none;
+}
+
+.hw-modal-mirror {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+}
+
+.section-modal-body {
+  overflow: auto;
+  min-height: 0;
+  padding: 14px 16px 16px;
+}
+
+.section-modal-subtitle {
+  margin: 14px 0 8px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-dim);
+}
+
+.section-modal-subtitle:first-child {
+  margin-top: 0;
+}
+
+/* Clock's title sits inside its strip: indent only the title for the expand
+   icon, not the whole strip (that pushed the controls off-centre). */
+.section-clock.has-expand > .hw-expand-btn + .hw-strip {
+  margin-left: 0;
+}
+
+.section-clock.has-expand > .hw-strip > .hw-strip-label:first-child {
+  margin-left: 18px;
+}
+
+/* Titles that live inside the first row (Clock, Filter, Amplifier) sit
+   1px above the expand icon's centre; header titles are already centred.
+   Relative nudge so nothing else in the section moves. */
+.hw-section.has-expand
+  > .hw-expand-btn
+  + .hw-strip
+  > .hw-strip-label:first-child:not(.hw-col-label) {
+  position: relative;
+  top: 1px;
+}
+
+/* Section modal: the header carries the section name (in the accent blue);
+   with the in-section title removed, keep header switches on the right. */
+.section-modal .modal-head h2 {
+  color: var(--accent);
+}
+
+/* Extra class so it beats the scaled style copy (injected later, same specificity) */
+.hw-modal-frame .hw-modal-mirror .hw-section-head {
+  justify-content: flex-end;
+}
+
+/* Section modal: the modal sheet is the container — no second box inside.
+   Extra classes so this beats the scaled style copy. */
+.hw-board.hw-modal-frame .hw-section.hw-modal-mirror {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}

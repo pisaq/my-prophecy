@@ -1,0 +1,32 @@
+/* Design tokens: colours, radii, fonts. */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0c0c0e;
+  --window: rgb(22 22 26 / 52%);
+  --window-border: rgb(255 255 255 / 10%);
+  --sidebar: rgb(16 16 20 / 55%);
+  --panel: rgb(40 42 48 / 48%);
+  --panel-border: rgb(255 255 255 / 6%);
+  --text: #f5f5f7;
+  --text-dim: rgb(235 235 245 / 55%);
+  --text-faint: rgb(235 235 245 / 32%);
+  --accent: #7eb8c9;
+  --accent-strong: #9fd0dd;
+  /* Lit buttons (On, 4 Pole, Export, …): translucent glass with a faint glow */
+  --accent-fill: linear-gradient(180deg, rgb(159 208 221 / 38%), rgb(126 184 201 / 22%));
+  --accent-fill-border: rgb(159 208 221 / 50%);
+  --accent-fill-text: #e6f6fa;
+  --accent-fill-glow: inset 0 1px 0 rgb(255 255 255 / 10%), 0 0 12px rgb(126 184 201 / 16%);
+  --ok: #34c759;
+  --warn: #ff9f0a;
+  --danger: #ff453a;
+  --shadow: 0 24px 80px rgb(0 0 0 / 45%);
+  --radius-window: 12px;
+  --radius-panel: 10px;
+  --font:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  --mono: 'SF Mono', ui-monospace, Menlo, Monaco, Consolas, monospace;
+}

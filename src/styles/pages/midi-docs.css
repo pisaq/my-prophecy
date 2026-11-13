@@ -1,0 +1,93 @@
+/* MIDI Docs page. */
+
+.midi-docs-panel .hint {
+  margin-bottom: 12px;
+}
+
+.midi-docs-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-bottom: 16px;
+}
+
+.midi-docs-toc a {
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.midi-docs-toc a:hover {
+  text-decoration: underline;
+}
+
+.midi-docs-block h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.midi-docs-group {
+  margin-top: 14px;
+}
+
+.midi-docs-group h4 {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.midi-docs-table-wrap {
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  background: rgb(0 0 0 / 22%);
+}
+
+.midi-docs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.midi-docs-table th,
+.midi-docs-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgb(255 255 255 / 5%);
+  vertical-align: top;
+}
+
+.midi-docs-table th {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  background: rgb(255 255 255 / 3%);
+  position: sticky;
+  top: 0;
+}
+
+.midi-docs-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.midi-docs-table td.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.midi-docs-foot {
+  margin-top: 16px;
+}
+
+.midi-docs-foot a {
+  color: var(--accent-strong);
+}

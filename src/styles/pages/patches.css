@@ -1,0 +1,323 @@
+/* Patches page (record previews, library, similar, morph). */
+
+/* —— Patches (record previews · library · similar · morph) —— */
+
+.pb {
+  max-width: 1100px;
+}
+
+.pb .panel .hint {
+  margin: 0 0 12px;
+}
+
+.pb .field {
+  margin-bottom: 0;
+}
+
+.pb-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px 12px;
+  margin-top: 10px;
+}
+
+.pb-row:first-of-type {
+  margin-top: 0;
+}
+
+.pb-field {
+  min-width: 90px;
+}
+
+.pb-field.pb-num {
+  min-width: 0;
+  width: 70px;
+}
+
+.pb-field.pb-wide {
+  flex: 1 1 240px;
+  max-width: 420px;
+}
+
+/* One 32px line for every control on this page (same as Audio → MIDI) */
+.pb .primary-btn,
+.pb .ghost-btn,
+.pb .mac-select,
+.pb .mac-number,
+.pb-check {
+  box-sizing: border-box;
+  height: 32px;
+}
+
+.pb .primary-btn,
+.pb .ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.pb .mac-select,
+.pb .mac-number {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.pb-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.pb-check input {
+  accent-color: var(--accent);
+}
+
+.pb-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.pb-empty {
+  grid-column: 1 / -1;
+}
+
+.pb-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgb(0 0 0 / 22%);
+  border: 1px solid var(--panel-border);
+  min-width: 0;
+}
+
+.pb-card.is-playing {
+  border-color: rgb(126 184 201 / 55%);
+  background: rgb(126 184 201 / 8%);
+}
+
+.pb-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.pb-play {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgb(126 184 201 / 45%);
+  background: rgb(126 184 201 / 14%);
+  color: var(--accent-strong);
+  font-size: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pb-play:hover:not(:disabled) {
+  background: rgb(126 184 201 / 28%);
+}
+
+.pb-play:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.pb-card-titles {
+  min-width: 0;
+}
+
+.pb-card-name {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pb-card-sub {
+  font-size: 10px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.pb-wave {
+  display: block;
+  width: 100%;
+  height: 34px;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 25%);
+}
+
+.pb-badges {
+  display: flex;
+  gap: 4px;
+  min-height: 16px;
+}
+
+.pb-badge {
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 999px;
+  color: var(--accent);
+  background: rgb(126 184 201 / 12%);
+}
+
+.pb-badge.is-warn {
+  color: #ffd58a;
+  background: rgb(255 159 10 / 14%);
+}
+
+.pb-card-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.pb .pb-card-actions .ghost-btn {
+  flex: 1;
+  height: 26px;
+  padding: 0 8px;
+  font-size: 11px;
+}
+
+.pb .pb-card-actions .pb-del {
+  flex: 0 0 26px;
+  padding: 0;
+}
+
+.pb-ref {
+  flex: 1 1 auto;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pb-sim {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.pb-sim-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1.4fr) minmax(80px, 1fr) 44px auto;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: rgb(0 0 0 / 18%);
+}
+
+.pb-sim-name {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.pb-sim-name > span:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pb-sim-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 8%);
+  overflow: hidden;
+}
+
+.pb-sim-fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+.pb-sim-pct {
+  font-size: 12px;
+  text-align: right;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.pb .pb-sim-row .ghost-btn {
+  height: 26px;
+  font-size: 11px;
+  padding: 0 10px;
+}
+
+.pb-morph-row {
+  align-items: center;
+}
+
+.pb-slider {
+  flex: 1 1 320px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+}
+
+.pb-slider input[type='range'] {
+  flex: 1;
+  accent-color: var(--accent);
+}
+
+.pb-morph-end {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.pb-morph-val {
+  width: 40px;
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (width <= 700px) {
+  .pb-sim-row {
+    grid-template-columns: 28px minmax(0, 1fr) 44px auto;
+  }
+
+  .pb-sim-bar {
+    display: none;
+  }
+}
+
+/* The button display rules above would otherwise override [hidden] */
+.pb [hidden] {
+  display: none !important;
+}

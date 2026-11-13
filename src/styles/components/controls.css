@@ -1,0 +1,269 @@
+/* Shared controls: knobs, sliders, selects, toggles, buttons, keys. */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-panel);
+  padding: 14px 14px 10px;
+}
+
+.panel-title {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.panel-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+}
+
+.control {
+  width: 92px;
+}
+
+.control-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.control-value {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--accent);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.control-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.control-row .control-value {
+  margin: 0;
+}
+
+.slider-control,
+.select-control {
+  width: 180px;
+}
+
+.toggle-control {
+  width: auto;
+  min-width: 110px;
+}
+
+.knob {
+  --angle: -135deg;
+
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 16%), transparent 42%),
+    linear-gradient(160deg, #3a3a3e, #1d1d20);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 12%),
+    inset 0 -2px 6px rgb(0 0 0 / 45%),
+    0 4px 10px rgb(0 0 0 / 25%);
+  position: relative;
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.knob::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / 5%);
+}
+
+.knob-pointer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 22px;
+  margin-left: -1px;
+  margin-top: -22px;
+  border-radius: 2px;
+  background: var(--accent-strong);
+  transform-origin: bottom center;
+  transform: rotate(var(--angle));
+  box-shadow: 0 0 8px rgb(126 184 201 / 35%);
+  transition:
+    background 120ms ease,
+    box-shadow 120ms ease;
+}
+
+/* Last-touched / actively dragged knob — warmer needle so it stands out */
+.knob.hot .knob-pointer,
+.knob.active .knob-pointer {
+  background: #ffd56a;
+  box-shadow: 0 0 10px rgb(255 213 106 / 55%);
+}
+
+/* Same last-touched rule for pitch/mod wheels */
+.wheel-track.hot .wheel-thumb,
+.wheel-track.active .wheel-thumb {
+  background: linear-gradient(180deg, #ffe08a, #e0b24a);
+  box-shadow: 0 1px 3px rgb(255 213 106 / 28%);
+}
+
+.mac-slider {
+  width: 100%;
+  accent-color: var(--accent);
+  height: 18px;
+}
+
+.mac-select,
+.mac-number {
+  appearance: none;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  background: rgb(0 0 0 / 28%);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  padding: 6px 8px;
+  outline: none;
+}
+
+.mac-select.compact {
+  padding: 5px 6px;
+  font-size: 11px;
+}
+
+.mac-select:focus,
+.mac-number:focus {
+  border-color: rgb(126 184 201 / 55%);
+  box-shadow: 0 0 0 3px rgb(126 184 201 / 18%);
+}
+
+/* Last-touched select (scroll or change) — same warm cue as knobs */
+.mac-select.hot {
+  border-color: rgb(255 213 106 / 65%);
+  box-shadow: 0 0 0 2px rgb(255 213 106 / 22%);
+  color: #ffe08a;
+}
+
+.mac-toggle {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  background: rgb(0 0 0 / 25%);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* On/Off label is shorter for On — reserve Off width so neighbors don't jump */
+.toggle-control.labeled .mac-toggle {
+  min-width: calc(3ch + 1.75em);
+}
+
+.mac-toggle.on {
+  color: var(--accent-fill-text);
+  background: var(--accent-fill);
+  border-color: var(--accent-fill-border);
+  box-shadow: var(--accent-fill-glow);
+}
+
+.primary-btn,
+.ghost-btn {
+  box-sizing: border-box;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.primary-btn {
+  background: var(--accent-fill);
+  /* Fill inside a visible 1px edge, like .ghost-btn — otherwise the fill runs
+     under the border and the button looks taller than ghost buttons */
+  background-clip: padding-box;
+  border-color: var(--accent-fill-border);
+  color: var(--accent-fill-text);
+  box-shadow: var(--accent-fill-glow);
+}
+
+.ghost-btn {
+  background: rgb(255 255 255 / 5%);
+  border-color: rgb(255 255 255 / 10%);
+  color: var(--text);
+}
+
+.ghost-btn.on,
+.hw-mode-btn.on {
+  /* Color only — same border width / font-weight as off */
+  border-width: 1px;
+}
+
+.ghost-btn:hover,
+.primary-btn:hover {
+  filter: brightness(1.06);
+}
+
+.primary-btn:disabled,
+.ghost-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.hw-seq-head .gated-seq-btn:active,
+.gated-seq-compact .gated-seq-btn:active,
+.gated-seq-compact .gated-seq-track-clear:active {
+  background: rgb(126 184 201 / 28%);
+  border-color: rgb(126 184 201 / 50%);
+  color: var(--accent-strong);
+  filter: none;
+}
+
+.mini-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.key {
+  border: 1px solid rgb(255 255 255 / 8%);
+  background: rgb(255 255 255 / 4%);
+  color: var(--text-dim);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 10px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.key.down,
+.key:active {
+  background: rgb(126 184 201 / 25%);
+  color: var(--accent-strong);
+}

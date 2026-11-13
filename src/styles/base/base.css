@@ -1,0 +1,52 @@
+/* Element defaults and text-selection rules. */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+input,
+textarea,
+select {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Text is selectable on every page except the Panel (a hardware surface) */
+.window:not(.panel-mode) .main-head,
+.window:not(.panel-mode) .workspace {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* …but not on controls you drag or click, so using them never highlights text */
+.window:not(.panel-mode)
+  .workspace
+  :is(
+    button,
+    canvas,
+    [role='button'],
+    .control,
+    .gated-seq-steps,
+    .pitch-pad,
+    .mini-keys,
+    .a2m-drop,
+    .pb-slider,
+    input[type='range']
+  ) {
+  user-select: none;
+  -webkit-user-select: none;
+}

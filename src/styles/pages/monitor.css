@@ -1,0 +1,26 @@
+/* MIDI Monitor page. */
+
+.midi-log {
+  height: 520px;
+  overflow: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.55;
+  background: rgb(0 0 0 / 28%);
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--panel-border);
+}
+
+.log-line {
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.log-line.out {
+  color: #b7e0ea;
+}
+
+.log-line.in {
+  color: #d6d2c4;
+}

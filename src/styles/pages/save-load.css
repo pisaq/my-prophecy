@@ -1,0 +1,30 @@
+/* Save / Load page. */
+
+/* —— Save / Load —— */
+
+.saveload {
+  max-width: 640px;
+}
+
+.saveload .panel .hint {
+  margin: 0 0 12px;
+}
+
+.saveload-status {
+  margin: 0;
+  min-height: 1.4em;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.saveload-status.is-ok {
+  color: #9be3b0;
+}
+
+.saveload-status.is-warn {
+  color: #ffd58a;
+}
+
+.saveload-status.is-error {
+  color: #ff9d94;
+}

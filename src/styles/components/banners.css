@@ -1,0 +1,36 @@
+/* Info / warning banners. */
+
+.banner.warn {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgb(255 159 10 / 12%);
+  border: 1px solid rgb(255 159 10 / 28%);
+  color: #ffe4b8;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.banner.warn a {
+  color: #fff2d6;
+  font-weight: 600;
+}
+
+.banner.info {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgb(126 184 201 / 12%);
+  border: 1px solid rgb(126 184 201 / 28%);
+  color: #d7eef4;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.banner.info code {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 28%);
+}

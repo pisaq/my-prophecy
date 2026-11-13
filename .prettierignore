@@ -1,0 +1,6 @@
+dist/
+node_modules/
+public/models/
+package-lock.json
+companion/
+bin/
